@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERVIDOR EDUARDO TEXIS</title>
+</head>
+<body>
+    <h1>Servidor de Texis Hernandez Eduardo</h1>
+
+    <button onclick="oprime()">
+        Oprime el boton
+    </button>
+    <script>
+        async function oprime() {
+            try {
+                const respuesta = await fetch("indic.php");
+                
+                if (respuesta.ok) {
+                    const texto = await respuesta.text();
+                    alert(texto);
+                } else { 
+                    throw new Error("Error en el servidor: " + respuesta.status);
+                }
+            } catch (error) {
+                console.error("Hubo un fallo:", error);
+                alert("Falló la conexión: " + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
